@@ -1,0 +1,10 @@
+{
+  "domain": "sony_vpl",
+  "name": "Sony VPL Projector",
+  "codeowners": ["@sl1288"],
+  "config_flow": true,
+  "documentation": "https://github.com/sl1288/ha-sony-vpl",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "version": "1.0.0"
+}

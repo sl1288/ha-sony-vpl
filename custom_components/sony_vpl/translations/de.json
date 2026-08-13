@@ -1,0 +1,469 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Gerät ist bereits konfiguriert",
+      "different_device": "Der Projektor unter dieser Adresse meldet eine andere Seriennummer und ist damit nicht der, für den dieser Eintrag angelegt wurde.",
+      "reauth_successful": "Erneute Authentifizierung war erfolgreich",
+      "reconfigure_successful": "Neukonfiguration war erfolgreich"
+    },
+    "error": {
+      "cannot_connect": "Verbindung fehlgeschlagen",
+      "invalid_community": "Der Projektor hat den Community-String abgelehnt, oder er ist nicht genau vier Zeichen lang.",
+      "unknown": "Unerwarteter Fehler"
+    },
+    "step": {
+      "reauth_confirm": {
+        "data": {
+          "community": "Community"
+        },
+        "data_description": {
+          "community": "Die PJ-Talk-Community des Projektors, zu finden unter Einstellungen, Netzwerk, PJ Talk. Genau vier Zeichen."
+        },
+        "description": "Der Projektor unter {host} hat den gespeicherten PJ-Talk-Community-String abgelehnt. Bitte gib den aktuellen ein."
+      },
+      "reconfigure": {
+        "data": {
+          "community": "Community",
+          "host": "Host",
+          "port": "Port"
+        },
+        "data_description": {
+          "community": "Die PJ-Talk-Community des Projektors. Werkseinstellung: SONY.",
+          "host": "Der Hostname oder die IP-Adresse des Projektors.",
+          "port": "Der PJ-Talk-Port. Werkseinstellung: 53484."
+        },
+        "description": "Aktualisiere die Verbindungsdaten deines Projektors."
+      },
+      "user": {
+        "data": {
+          "community": "Community",
+          "host": "Host",
+          "port": "Port"
+        },
+        "data_description": {
+          "community": "Die PJ-Talk-Community des Projektors, zu finden unter Einstellungen, Netzwerk, PJ Talk. Genau vier Zeichen. Werkseinstellung: SONY.",
+          "host": "Der Hostname oder die IP-Adresse des Projektors, zum Beispiel 10.10.10.10. Setze im Menü des Projektors unter Einstellungen die Netzwerkverwaltung auf Ein, sonst nimmt er im Standby keine Verbindungen an und Home Assistant kann ihn nicht einschalten.",
+          "port": "Der PJ-Talk-Port. Werkseinstellung: 53484."
+        },
+        "description": "Gib die Verbindungsdaten deines Sony VPL Projektors ein."
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "command_timeout": "Zeitlimit pro Befehl",
+          "scan_interval_on": "Abfrageintervall im Betrieb",
+          "scan_interval_settings": "Abfrageintervall für Bildeinstellungen",
+          "scan_interval_standby": "Abfrageintervall im Standby"
+        },
+        "data_description": {
+          "command_timeout": "Wie lange auf eine Antwort gewartet wird. Der Projektor antwortet normalerweise innerhalb einer Sekunde, unter Last bis zu etwa drei.",
+          "scan_interval_on": "Wie oft Betriebszustand, Störungen, Eingang und Lampenstunden gelesen werden, während der Projektor läuft.",
+          "scan_interval_settings": "Wie oft die Bildeinstellungen zurückgelesen werden. Nur relevant, wenn du sie auch mit der Fernbedienung des Projektors änderst. Einstellungen, deren Entität deaktiviert ist, werden überhaupt nicht gelesen.",
+          "scan_interval_standby": "Wie oft der Projektor im ausgeschalteten Zustand abgefragt wird. Erhöhe den Wert, wenn Home Assistant nicht schnell mitbekommen muss, dass er von Hand eingeschaltet wurde."
+        },
+        "description": "Der Projektor verarbeitet nur einen Befehl gleichzeitig, kürzere Intervalle bedeuten also mehr Last für ihn. Die Voreinstellungen passen zu einem täglich genutzten Projektor."
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "problem": {
+        "name": "Problem"
+      }
+    },
+    "button": {
+      "down": {
+        "name": "Cursor nach unten"
+      },
+      "enter": {
+        "name": "Eingabe"
+      },
+      "left": {
+        "name": "Cursor nach links"
+      },
+      "lens_focus_far": {
+        "name": "Objektiv Fokus fern"
+      },
+      "lens_focus_near": {
+        "name": "Objektiv Fokus nah"
+      },
+      "lens_shift_down": {
+        "name": "Objektiv Versatz nach unten"
+      },
+      "lens_shift_up": {
+        "name": "Objektiv Versatz nach oben"
+      },
+      "lens_zoom_large": {
+        "name": "Objektiv Zoom rein"
+      },
+      "lens_zoom_small": {
+        "name": "Objektiv Zoom raus"
+      },
+      "menu": {
+        "name": "Menü"
+      },
+      "right": {
+        "name": "Cursor nach rechts"
+      },
+      "up": {
+        "name": "Cursor nach oben"
+      }
+    },
+    "number": {
+      "brightness": {
+        "name": "Helligkeit"
+      },
+      "color": {
+        "name": "Farbe"
+      },
+      "contrast": {
+        "name": "Kontrast"
+      },
+      "hue": {
+        "name": "Farbton"
+      },
+      "reality_creation_noise_filtering": {
+        "name": "Reality Creation Rauschfilter"
+      },
+      "reality_creation_resolution": {
+        "name": "Reality Creation Resolution"
+      },
+      "sharpness": {
+        "name": "Scharfzeichnung"
+      }
+    },
+    "select": {
+      "aspect": {
+        "name": "Bildformat",
+        "state": {
+          "normal": "Normal",
+          "squeeze": "Squeeze",
+          "stretch": "Stretch",
+          "v_stretch": "V Stretch",
+          "zoom_1_85": "1.85:1 Zoom",
+          "zoom_2_35": "2.35:1 Zoom"
+        }
+      },
+      "calibration_preset": {
+        "name": "Kalibrierungs-Voreinstellung",
+        "state": {
+          "bright_cinema": "Bright Cinema",
+          "bright_tv": "Bright TV",
+          "cinema_film_1": "Cinema Film 1",
+          "cinema_film_2": "Cinema Film 2",
+          "game": "Game",
+          "photo": "Photo",
+          "reference": "Reference",
+          "tv": "TV",
+          "user": "User"
+        }
+      },
+      "clear_white": {
+        "name": "Clear White",
+        "state": {
+          "high": "Hoch",
+          "low": "Niedrig",
+          "off": "Aus"
+        }
+      },
+      "color_space": {
+        "name": "Farbraum",
+        "state": {
+          "bt2020": "BT.2020",
+          "bt709": "BT.709",
+          "color_space_1": "Color Space 1",
+          "color_space_2": "Color Space 2",
+          "color_space_3": "Color Space 3",
+          "custom": "Benutzerdefiniert"
+        }
+      },
+      "color_temperature": {
+        "name": "Farbtemperatur",
+        "state": {
+          "custom_1": "Benutzerdefiniert 1",
+          "custom_2": "Benutzerdefiniert 2",
+          "custom_3": "Benutzerdefiniert 3",
+          "custom_4": "Benutzerdefiniert 4",
+          "custom_5": "Benutzerdefiniert 5",
+          "d55": "D55",
+          "d65": "D65",
+          "d75": "D75",
+          "d93": "D93"
+        }
+      },
+      "contrast_enhancer": {
+        "name": "Contrast Enhancer",
+        "state": {
+          "high": "Hoch",
+          "low": "Niedrig",
+          "middle": "Mittel",
+          "off": "Aus"
+        }
+      },
+      "film_mode": {
+        "name": "Filmmodus",
+        "state": {
+          "auto": "Automatisch",
+          "off": "Aus"
+        }
+      },
+      "gamma_correction": {
+        "name": "Gammakorrektur",
+        "state": {
+          "gamma_10": "Gamma 10",
+          "gamma_1_8": "1.8",
+          "gamma_2_0": "2.0",
+          "gamma_2_1": "2.1",
+          "gamma_2_2": "2.2",
+          "gamma_2_4": "2.4",
+          "gamma_2_6": "2.6",
+          "gamma_7": "Gamma 7",
+          "gamma_8": "Gamma 8",
+          "gamma_9": "Gamma 9",
+          "off": "Aus"
+        }
+      },
+      "hdmi1_dynamic_range": {
+        "name": "HDMI 1 Dynamikbereich",
+        "state": {
+          "auto": "Automatisch",
+          "full": "Vollständig",
+          "limited": "Begrenzt"
+        }
+      },
+      "hdmi2_dynamic_range": {
+        "name": "HDMI 2 Dynamikbereich",
+        "state": {
+          "auto": "Automatisch",
+          "full": "Vollständig",
+          "limited": "Begrenzt"
+        }
+      },
+      "hdr": {
+        "name": "HDR",
+        "state": {
+          "auto": "Automatisch",
+          "hdr10": "HDR10",
+          "hdr_reference": "HDR Reference",
+          "hlg": "HLG",
+          "off": "Aus"
+        }
+      },
+      "input": {
+        "name": "Eingang",
+        "state": {
+          "hdmi1": "HDMI 1",
+          "hdmi2": "HDMI 2"
+        }
+      },
+      "lamp_control": {
+        "name": "Lampensteuerung",
+        "state": {
+          "high": "Hoch",
+          "low": "Niedrig"
+        }
+      },
+      "motionflow": {
+        "name": "Motionflow",
+        "state": {
+          "off": "Aus",
+          "smooth_high": "Smooth High",
+          "smooth_low": "Smooth Low",
+          "true_cinema": "True Cinema"
+        }
+      },
+      "mpeg_noise_reduction": {
+        "name": "MPEG-Rauschreduzierung",
+        "state": {
+          "auto": "Automatisch",
+          "high": "Hoch",
+          "low": "Niedrig",
+          "middle": "Mittel",
+          "off": "Aus"
+        }
+      },
+      "noise_reduction": {
+        "name": "Rauschreduzierung",
+        "state": {
+          "auto": "Automatisch",
+          "high": "Hoch",
+          "low": "Niedrig",
+          "middle": "Mittel",
+          "off": "Aus"
+        }
+      },
+      "reality_creation_database": {
+        "name": "Reality Creation Datenbank",
+        "state": {
+          "mastered_in_4k": "Mastered in 4K",
+          "normal": "Normal"
+        }
+      },
+      "smooth_gradation": {
+        "name": "Sanfte Abstufung",
+        "state": {
+          "high": "Hoch",
+          "low": "Niedrig",
+          "middle": "Mittel",
+          "off": "Aus"
+        }
+      }
+    },
+    "sensor": {
+      "lamp_hours": {
+        "name": "Lampenstunden"
+      },
+      "power_status": {
+        "name": "Betriebszustand",
+        "state": {
+          "cooling1": "Kühlt ab",
+          "cooling2": "Kühlt ab",
+          "power_on": "Ein",
+          "standby": "Standby",
+          "start_up": "Startet",
+          "start_up_lamp": "Lampe startet"
+        }
+      }
+    },
+    "switch": {
+      "color_correction": {
+        "name": "Farbkorrektur"
+      },
+      "input_lag_reduction": {
+        "name": "Input Lag Reduction"
+      },
+      "picture_muting": {
+        "name": "Bild stummschalten"
+      },
+      "reality_creation": {
+        "name": "Reality Creation"
+      },
+      "xv_color": {
+        "name": "x.v.Color"
+      }
+    }
+  },
+  "exceptions": {
+    "command_failed": {
+      "message": "Der Projektor hat den Befehl {command} nicht angenommen."
+    },
+    "connection_failed": {
+      "message": "Die Kommunikation mit dem Projektor ist fehlgeschlagen."
+    },
+    "invalid_community": {
+      "message": "Der Projektor hat den PJ-Talk-Community-String abgelehnt, bitte neu konfigurieren."
+    },
+    "setting_not_applicable": {
+      "message": "{name} kann im aktuellen Zustand des Projektors nicht geändert werden."
+    },
+    "turn_off_failed": {
+      "message": "Der Projektor konnte nicht ausgeschaltet werden."
+    },
+    "turn_on_failed": {
+      "message": "Der Projektor konnte nicht eingeschaltet werden. Falls er im Standby ist, prüfe, ob die Netzwerkverwaltung in seinem Menü auf Ein steht."
+    },
+    "unexpected_response": {
+      "message": "Der Projektor hat unerwartet geantwortet."
+    },
+    "unknown_command": {
+      "message": "{command} ist kein bekannter Fernbedienungsbefehl."
+    },
+    "value_rejected": {
+      "message": "Der Projektor hat den neuen Wert für {name} abgelehnt. Möglicherweise erlaubt der aktuelle Eingang oder das Signal ihn nicht."
+    },
+    "write_failed": {
+      "message": "{name} konnte am Projektor nicht geändert werden."
+    }
+  },
+  "services": {
+    "send_command": {
+      "name": "Befehl senden",
+      "description": "Sendet einen oder mehrere Infrarot-Fernbedienungsbefehle an den Projektor.",
+      "fields": {
+        "command": {
+          "name": "Befehl",
+          "description": "Die Befehle, die der Reihe nach gesendet werden."
+        },
+        "num_repeats": {
+          "name": "Wiederholungen",
+          "description": "Wie oft die gesamte Folge gesendet wird."
+        },
+        "delay_secs": {
+          "name": "Verzögerung",
+          "description": "Sekunden zwischen zwei Befehlen. Der Projektor verlangt mindestens 0,045; ein kleinerer Wert wird darauf angehoben."
+        }
+      }
+    }
+  },
+  "selector": {
+    "ir_command": {
+      "options": {
+        "aspect": "Bildformat: durchschalten",
+        "aspect_normal": "Bildformat: Normal",
+        "aspect_squeeze": "Bildformat: Squeeze",
+        "aspect_stretch": "Bildformat: Stretch",
+        "aspect_v_stretch": "Bildformat: V Stretch",
+        "aspect_zoom_1_85": "Bildformat: 1.85:1 Zoom",
+        "aspect_zoom_2_35": "Bildformat: 2.35:1 Zoom",
+        "brightness_down": "Helligkeit: verringern",
+        "brightness_up": "Helligkeit: erhöhen",
+        "calib_preset_bright_cinema": "Voreinstellung: Bright Cinema",
+        "calib_preset_bright_tv": "Voreinstellung: Bright TV",
+        "calib_preset_cinema_film_1": "Voreinstellung: Cinema Film 1",
+        "calib_preset_cinema_film_2": "Voreinstellung: Cinema Film 2",
+        "calib_preset_game": "Voreinstellung: Game",
+        "calib_preset_photo": "Voreinstellung: Photo",
+        "calib_preset_reference": "Voreinstellung: Reference",
+        "calib_preset_tv": "Voreinstellung: TV",
+        "calib_preset_user": "Voreinstellung: User",
+        "color_correction": "Farbkorrektur: durchschalten",
+        "color_down": "Farbe: verringern",
+        "color_space": "Farbraum: durchschalten",
+        "color_temperature": "Farbtemperatur: durchschalten",
+        "color_up": "Farbe: erhöhen",
+        "contrast_down": "Kontrast: verringern",
+        "contrast_enhancer": "Contrast Enhancer: durchschalten",
+        "contrast_up": "Kontrast: erhöhen",
+        "down": "Cursor: nach unten",
+        "enter": "Eingabe",
+        "gamma_correction": "Gammakorrektur: durchschalten",
+        "hdmi1": "Eingang: HDMI 1",
+        "hdmi2": "Eingang: HDMI 2",
+        "hue_down": "Farbton: verringern",
+        "hue_up": "Farbton: erhöhen",
+        "input": "Eingang: durchschalten",
+        "left": "Cursor: nach links",
+        "lens_focus": "Objektiv: Fokus einstellen",
+        "lens_focus_far": "Objektiv: Fokus weiter",
+        "lens_focus_near": "Objektiv: Fokus näher",
+        "lens_shift": "Objektiv: Versatz einstellen",
+        "lens_shift_down": "Objektiv: Versatz nach unten",
+        "lens_shift_left": "Objektiv: Versatz nach links",
+        "lens_shift_right": "Objektiv: Versatz nach rechts",
+        "lens_shift_up": "Objektiv: Versatz nach oben",
+        "lens_toggle": "Objektiv: Einstellung durchschalten",
+        "lens_zoom": "Objektiv: Zoom einstellen",
+        "lens_zoom_large": "Objektiv: Zoom größer",
+        "lens_zoom_small": "Objektiv: Zoom kleiner",
+        "menu": "Menü",
+        "motionflow": "Motionflow: durchschalten",
+        "picture_mode": "Bildmodus: durchschalten",
+        "picture_muting": "Bild stummschalten: umschalten",
+        "power_off": "Ein/Aus: ausschalten",
+        "power_on": "Ein/Aus: einschalten",
+        "power_toggle": "Ein/Aus: umschalten",
+        "reality_creation": "Reality Creation: durchschalten",
+        "reset": "Zurücksetzen",
+        "right": "Cursor: nach rechts",
+        "sharpness_down": "Scharfzeichnung: verringern",
+        "sharpness_up": "Scharfzeichnung: erhöhen",
+        "status_off": "Bildschirmanzeige: aus",
+        "status_on": "Bildschirmanzeige: ein",
+        "up": "Cursor: nach oben"
+      }
+    }
+  }
+}

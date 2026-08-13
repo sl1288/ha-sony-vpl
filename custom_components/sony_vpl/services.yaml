@@ -1,0 +1,93 @@
+# Generated from items.IR_COMMANDS; tests/test_services.py locks it back.
+send_command:
+  target:
+    entity:
+      integration: sony_vpl
+      domain: remote
+  fields:
+    command:
+      required: true
+      selector:
+        select:
+          multiple: true
+          mode: dropdown
+          translation_key: ir_command
+          options:
+            - aspect
+            - aspect_normal
+            - aspect_squeeze
+            - aspect_stretch
+            - aspect_v_stretch
+            - aspect_zoom_1_85
+            - aspect_zoom_2_35
+            - brightness_down
+            - brightness_up
+            - calib_preset_bright_cinema
+            - calib_preset_bright_tv
+            - calib_preset_cinema_film_1
+            - calib_preset_cinema_film_2
+            - calib_preset_game
+            - calib_preset_photo
+            - calib_preset_reference
+            - calib_preset_tv
+            - calib_preset_user
+            - color_correction
+            - color_down
+            - color_space
+            - color_temperature
+            - color_up
+            - contrast_down
+            - contrast_enhancer
+            - contrast_up
+            - down
+            - enter
+            - gamma_correction
+            - hdmi1
+            - hdmi2
+            - hue_down
+            - hue_up
+            - input
+            - left
+            - lens_focus
+            - lens_focus_far
+            - lens_focus_near
+            - lens_shift
+            - lens_shift_down
+            - lens_shift_left
+            - lens_shift_right
+            - lens_shift_up
+            - lens_toggle
+            - lens_zoom
+            - lens_zoom_large
+            - lens_zoom_small
+            - menu
+            - motionflow
+            - picture_mode
+            - picture_muting
+            - power_off
+            - power_on
+            - power_toggle
+            - reality_creation
+            - reset
+            - right
+            - sharpness_down
+            - sharpness_up
+            - status_off
+            - status_on
+            - up
+    num_repeats:
+      default: 1
+      selector:
+        number:
+          min: 1
+          max: 20
+          mode: box
+    delay_secs:
+      default: 0.4
+      selector:
+        number:
+          min: 0.045
+          max: 5
+          step: 0.005
+          unit_of_measurement: s
+          mode: box

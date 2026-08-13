@@ -1,0 +1,469 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Device is already configured",
+      "different_device": "The projector at this address reports a different serial number, so it is not the one this entry was created for.",
+      "reauth_successful": "Re-authentication was successful",
+      "reconfigure_successful": "Reconfiguration was successful"
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_community": "The projector rejected the community string, or it is not exactly four characters.",
+      "unknown": "Unexpected error"
+    },
+    "step": {
+      "reauth_confirm": {
+        "data": {
+          "community": "Community"
+        },
+        "data_description": {
+          "community": "The PJ Talk community of the projector, found under Setup, Network, PJ Talk. Exactly four characters."
+        },
+        "description": "The projector at {host} rejected the stored PJ Talk community string. Enter the current one."
+      },
+      "reconfigure": {
+        "data": {
+          "community": "Community",
+          "host": "Host",
+          "port": "Port"
+        },
+        "data_description": {
+          "community": "The PJ Talk community of the projector. Factory default: SONY.",
+          "host": "The hostname or IP address of the projector.",
+          "port": "The PJ Talk port. Factory default: 53484."
+        },
+        "description": "Update the connection details of your projector."
+      },
+      "user": {
+        "data": {
+          "community": "Community",
+          "host": "Host",
+          "port": "Port"
+        },
+        "data_description": {
+          "community": "The PJ Talk community of the projector, found under Setup, Network, PJ Talk. Exactly four characters. Factory default: SONY.",
+          "host": "The hostname or IP address of the projector, for example 10.10.10.10. Set Network Management to On in the projector's Setup menu, otherwise it will not accept connections while it is in standby and Home Assistant cannot switch it on.",
+          "port": "The PJ Talk port. Factory default: 53484."
+        },
+        "description": "Enter the connection details of your Sony VPL projector."
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "command_timeout": "Command timeout",
+          "scan_interval_on": "Update interval while on",
+          "scan_interval_settings": "Update interval for picture settings",
+          "scan_interval_standby": "Update interval while in standby"
+        },
+        "data_description": {
+          "command_timeout": "How long to wait for a reply. The projector normally answers within a second, but takes up to about three under load.",
+          "scan_interval_on": "How often power, faults, input and lamp hours are read while the projector is on.",
+          "scan_interval_settings": "How often the picture settings are read back. Only matters if you also change them with the projector's own remote control. Settings whose entity is disabled are never read at all.",
+          "scan_interval_standby": "How often the projector is polled while it is off. Raise this if you do not need Home Assistant to notice quickly that it was switched on by hand."
+        },
+        "description": "The projector accepts one command at a time, so shorter intervals mean more load on it. The defaults suit a projector used daily."
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "problem": {
+        "name": "Problem"
+      }
+    },
+    "button": {
+      "down": {
+        "name": "Cursor down"
+      },
+      "enter": {
+        "name": "Enter"
+      },
+      "left": {
+        "name": "Cursor left"
+      },
+      "lens_focus_far": {
+        "name": "Lens focus further"
+      },
+      "lens_focus_near": {
+        "name": "Lens focus nearer"
+      },
+      "lens_shift_down": {
+        "name": "Lens shift down"
+      },
+      "lens_shift_up": {
+        "name": "Lens shift up"
+      },
+      "lens_zoom_large": {
+        "name": "Lens zoom in"
+      },
+      "lens_zoom_small": {
+        "name": "Lens zoom out"
+      },
+      "menu": {
+        "name": "Menu"
+      },
+      "right": {
+        "name": "Cursor right"
+      },
+      "up": {
+        "name": "Cursor up"
+      }
+    },
+    "number": {
+      "brightness": {
+        "name": "Brightness"
+      },
+      "color": {
+        "name": "Color"
+      },
+      "contrast": {
+        "name": "Contrast"
+      },
+      "hue": {
+        "name": "Hue"
+      },
+      "reality_creation_noise_filtering": {
+        "name": "Reality Creation noise filtering"
+      },
+      "reality_creation_resolution": {
+        "name": "Reality Creation resolution"
+      },
+      "sharpness": {
+        "name": "Sharpness"
+      }
+    },
+    "select": {
+      "aspect": {
+        "name": "Aspect",
+        "state": {
+          "normal": "Normal",
+          "squeeze": "Squeeze",
+          "stretch": "Stretch",
+          "v_stretch": "V Stretch",
+          "zoom_1_85": "1.85:1 Zoom",
+          "zoom_2_35": "2.35:1 Zoom"
+        }
+      },
+      "calibration_preset": {
+        "name": "Calibration preset",
+        "state": {
+          "bright_cinema": "Bright Cinema",
+          "bright_tv": "Bright TV",
+          "cinema_film_1": "Cinema Film 1",
+          "cinema_film_2": "Cinema Film 2",
+          "game": "Game",
+          "photo": "Photo",
+          "reference": "Reference",
+          "tv": "TV",
+          "user": "User"
+        }
+      },
+      "clear_white": {
+        "name": "Clear White",
+        "state": {
+          "high": "High",
+          "low": "Low",
+          "off": "Off"
+        }
+      },
+      "color_space": {
+        "name": "Color space",
+        "state": {
+          "bt2020": "BT.2020",
+          "bt709": "BT.709",
+          "color_space_1": "Color Space 1",
+          "color_space_2": "Color Space 2",
+          "color_space_3": "Color Space 3",
+          "custom": "Custom"
+        }
+      },
+      "color_temperature": {
+        "name": "Color temperature",
+        "state": {
+          "custom_1": "Custom 1",
+          "custom_2": "Custom 2",
+          "custom_3": "Custom 3",
+          "custom_4": "Custom 4",
+          "custom_5": "Custom 5",
+          "d55": "D55",
+          "d65": "D65",
+          "d75": "D75",
+          "d93": "D93"
+        }
+      },
+      "contrast_enhancer": {
+        "name": "Contrast enhancer",
+        "state": {
+          "high": "High",
+          "low": "Low",
+          "middle": "Middle",
+          "off": "Off"
+        }
+      },
+      "film_mode": {
+        "name": "Film mode",
+        "state": {
+          "auto": "Auto",
+          "off": "Off"
+        }
+      },
+      "gamma_correction": {
+        "name": "Gamma correction",
+        "state": {
+          "gamma_10": "Gamma 10",
+          "gamma_1_8": "1.8",
+          "gamma_2_0": "2.0",
+          "gamma_2_1": "2.1",
+          "gamma_2_2": "2.2",
+          "gamma_2_4": "2.4",
+          "gamma_2_6": "2.6",
+          "gamma_7": "Gamma 7",
+          "gamma_8": "Gamma 8",
+          "gamma_9": "Gamma 9",
+          "off": "Off"
+        }
+      },
+      "hdmi1_dynamic_range": {
+        "name": "HDMI 1 dynamic range",
+        "state": {
+          "auto": "Auto",
+          "full": "Full",
+          "limited": "Limited"
+        }
+      },
+      "hdmi2_dynamic_range": {
+        "name": "HDMI 2 dynamic range",
+        "state": {
+          "auto": "Auto",
+          "full": "Full",
+          "limited": "Limited"
+        }
+      },
+      "hdr": {
+        "name": "HDR",
+        "state": {
+          "auto": "Auto",
+          "hdr10": "HDR10",
+          "hdr_reference": "HDR Reference",
+          "hlg": "HLG",
+          "off": "Off"
+        }
+      },
+      "input": {
+        "name": "Input",
+        "state": {
+          "hdmi1": "HDMI 1",
+          "hdmi2": "HDMI 2"
+        }
+      },
+      "lamp_control": {
+        "name": "Lamp control",
+        "state": {
+          "high": "High",
+          "low": "Low"
+        }
+      },
+      "motionflow": {
+        "name": "Motionflow",
+        "state": {
+          "off": "Off",
+          "smooth_high": "Smooth High",
+          "smooth_low": "Smooth Low",
+          "true_cinema": "True Cinema"
+        }
+      },
+      "mpeg_noise_reduction": {
+        "name": "MPEG noise reduction",
+        "state": {
+          "auto": "Auto",
+          "high": "High",
+          "low": "Low",
+          "middle": "Middle",
+          "off": "Off"
+        }
+      },
+      "noise_reduction": {
+        "name": "Noise reduction",
+        "state": {
+          "auto": "Auto",
+          "high": "High",
+          "low": "Low",
+          "middle": "Middle",
+          "off": "Off"
+        }
+      },
+      "reality_creation_database": {
+        "name": "Reality Creation database",
+        "state": {
+          "mastered_in_4k": "Mastered in 4K",
+          "normal": "Normal"
+        }
+      },
+      "smooth_gradation": {
+        "name": "Smooth gradation",
+        "state": {
+          "high": "High",
+          "low": "Low",
+          "middle": "Middle",
+          "off": "Off"
+        }
+      }
+    },
+    "sensor": {
+      "lamp_hours": {
+        "name": "Lamp hours"
+      },
+      "power_status": {
+        "name": "Power state",
+        "state": {
+          "cooling1": "Cooling",
+          "cooling2": "Cooling",
+          "power_on": "On",
+          "standby": "Standby",
+          "start_up": "Starting up",
+          "start_up_lamp": "Lamp starting up"
+        }
+      }
+    },
+    "switch": {
+      "color_correction": {
+        "name": "Color correction"
+      },
+      "input_lag_reduction": {
+        "name": "Input lag reduction"
+      },
+      "picture_muting": {
+        "name": "Picture muting"
+      },
+      "reality_creation": {
+        "name": "Reality Creation"
+      },
+      "xv_color": {
+        "name": "x.v.Color"
+      }
+    }
+  },
+  "exceptions": {
+    "command_failed": {
+      "message": "The projector did not accept the command {command}."
+    },
+    "connection_failed": {
+      "message": "Failed to communicate with the projector."
+    },
+    "invalid_community": {
+      "message": "The projector rejected the PJ Talk community string, please reconfigure it."
+    },
+    "setting_not_applicable": {
+      "message": "{name} cannot be changed while the projector is in its current state."
+    },
+    "turn_off_failed": {
+      "message": "Failed to turn off the projector."
+    },
+    "turn_on_failed": {
+      "message": "Failed to turn on the projector. If it is in standby, check that Network Management is set to On in its Setup menu."
+    },
+    "unexpected_response": {
+      "message": "The projector sent an unexpected response."
+    },
+    "unknown_command": {
+      "message": "{command} is not a known remote command."
+    },
+    "value_rejected": {
+      "message": "The projector rejected the new value for {name}. The current input or signal may not allow it."
+    },
+    "write_failed": {
+      "message": "Failed to change {name} on the projector."
+    }
+  },
+  "services": {
+    "send_command": {
+      "name": "Send command",
+      "description": "Replays one or more of the projector's infrared remote codes.",
+      "fields": {
+        "command": {
+          "name": "Command",
+          "description": "The remote codes to replay, in order."
+        },
+        "num_repeats": {
+          "name": "Repeats",
+          "description": "How many times to send the whole sequence."
+        },
+        "delay_secs": {
+          "name": "Delay",
+          "description": "Seconds between two codes. The projector requires at least 0.045, and a smaller value is raised to that."
+        }
+      }
+    }
+  },
+  "selector": {
+    "ir_command": {
+      "options": {
+        "aspect": "Aspect: cycle",
+        "aspect_normal": "Aspect: Normal",
+        "aspect_squeeze": "Aspect: Squeeze",
+        "aspect_stretch": "Aspect: Stretch",
+        "aspect_v_stretch": "Aspect: V Stretch",
+        "aspect_zoom_1_85": "Aspect: 1.85:1 Zoom",
+        "aspect_zoom_2_35": "Aspect: 2.35:1 Zoom",
+        "brightness_down": "Brightness: down",
+        "brightness_up": "Brightness: up",
+        "calib_preset_bright_cinema": "Preset: Bright Cinema",
+        "calib_preset_bright_tv": "Preset: Bright TV",
+        "calib_preset_cinema_film_1": "Preset: Cinema Film 1",
+        "calib_preset_cinema_film_2": "Preset: Cinema Film 2",
+        "calib_preset_game": "Preset: Game",
+        "calib_preset_photo": "Preset: Photo",
+        "calib_preset_reference": "Preset: Reference",
+        "calib_preset_tv": "Preset: TV",
+        "calib_preset_user": "Preset: User",
+        "color_correction": "Color correction: cycle",
+        "color_down": "Color: down",
+        "color_space": "Color space: cycle",
+        "color_temperature": "Color temperature: cycle",
+        "color_up": "Color: up",
+        "contrast_down": "Contrast: down",
+        "contrast_enhancer": "Contrast Enhancer: cycle",
+        "contrast_up": "Contrast: up",
+        "down": "Cursor: down",
+        "enter": "Enter",
+        "gamma_correction": "Gamma correction: cycle",
+        "hdmi1": "Input: HDMI 1",
+        "hdmi2": "Input: HDMI 2",
+        "hue_down": "Hue: down",
+        "hue_up": "Hue: up",
+        "input": "Input: cycle",
+        "left": "Cursor: left",
+        "lens_focus": "Lens: focus adjustment",
+        "lens_focus_far": "Lens: focus further",
+        "lens_focus_near": "Lens: focus nearer",
+        "lens_shift": "Lens: shift adjustment",
+        "lens_shift_down": "Lens: shift down",
+        "lens_shift_left": "Lens: shift left",
+        "lens_shift_right": "Lens: shift right",
+        "lens_shift_up": "Lens: shift up",
+        "lens_toggle": "Lens: cycle adjustment",
+        "lens_zoom": "Lens: zoom adjustment",
+        "lens_zoom_large": "Lens: zoom in",
+        "lens_zoom_small": "Lens: zoom out",
+        "menu": "Menu",
+        "motionflow": "Motionflow: cycle",
+        "picture_mode": "Picture mode: cycle",
+        "picture_muting": "Picture muting: toggle",
+        "power_off": "Power: off",
+        "power_on": "Power: on",
+        "power_toggle": "Power: toggle",
+        "reality_creation": "Reality Creation: cycle",
+        "reset": "Reset",
+        "right": "Cursor: right",
+        "sharpness_down": "Sharpness: down",
+        "sharpness_up": "Sharpness: up",
+        "status_off": "On-screen display: off",
+        "status_on": "On-screen display: on",
+        "up": "Cursor: up"
+      }
+    }
+  }
+}

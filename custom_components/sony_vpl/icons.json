@@ -1,0 +1,149 @@
+{
+  "entity": {
+    "button": {
+      "down": {
+        "default": "mdi:arrow-down-bold"
+      },
+      "enter": {
+        "default": "mdi:check-circle-outline"
+      },
+      "left": {
+        "default": "mdi:arrow-left-bold"
+      },
+      "lens_focus_far": {
+        "default": "mdi:image-filter-center-focus-strong-outline"
+      },
+      "lens_focus_near": {
+        "default": "mdi:image-filter-center-focus"
+      },
+      "lens_shift_down": {
+        "default": "mdi:arrow-down-box"
+      },
+      "lens_shift_up": {
+        "default": "mdi:arrow-up-box"
+      },
+      "lens_zoom_large": {
+        "default": "mdi:magnify-plus-outline"
+      },
+      "lens_zoom_small": {
+        "default": "mdi:magnify-minus-outline"
+      },
+      "menu": {
+        "default": "mdi:menu"
+      },
+      "right": {
+        "default": "mdi:arrow-right-bold"
+      },
+      "up": {
+        "default": "mdi:arrow-up-bold"
+      }
+    },
+    "number": {
+      "brightness": {
+        "default": "mdi:brightness-6"
+      },
+      "color": {
+        "default": "mdi:palette"
+      },
+      "contrast": {
+        "default": "mdi:contrast-circle"
+      },
+      "hue": {
+        "default": "mdi:invert-colors"
+      },
+      "reality_creation_noise_filtering": {
+        "default": "mdi:blur"
+      },
+      "reality_creation_resolution": {
+        "default": "mdi:magnify-plus-outline"
+      },
+      "sharpness": {
+        "default": "mdi:triangle-outline"
+      }
+    },
+    "select": {
+      "aspect": {
+        "default": "mdi:aspect-ratio"
+      },
+      "calibration_preset": {
+        "default": "mdi:image-filter-vintage"
+      },
+      "clear_white": {
+        "default": "mdi:white-balance-sunny"
+      },
+      "color_space": {
+        "default": "mdi:palette-outline"
+      },
+      "color_temperature": {
+        "default": "mdi:thermometer-lines"
+      },
+      "contrast_enhancer": {
+        "default": "mdi:contrast-box"
+      },
+      "film_mode": {
+        "default": "mdi:filmstrip"
+      },
+      "gamma_correction": {
+        "default": "mdi:chart-bell-curve"
+      },
+      "hdmi1_dynamic_range": {
+        "default": "mdi:video-input-hdmi"
+      },
+      "hdmi2_dynamic_range": {
+        "default": "mdi:video-input-hdmi"
+      },
+      "hdr": {
+        "default": "mdi:hdr"
+      },
+      "input": {
+        "default": "mdi:video-input-hdmi"
+      },
+      "lamp_control": {
+        "default": "mdi:lightbulb-on-outline"
+      },
+      "motionflow": {
+        "default": "mdi:motion-play-outline"
+      },
+      "mpeg_noise_reduction": {
+        "default": "mdi:blur-linear"
+      },
+      "noise_reduction": {
+        "default": "mdi:blur"
+      },
+      "reality_creation_database": {
+        "default": "mdi:database-outline"
+      },
+      "smooth_gradation": {
+        "default": "mdi:gradient-horizontal"
+      }
+    },
+    "sensor": {
+      "lamp_hours": {
+        "default": "mdi:lightbulb-on-outline"
+      },
+      "power_status": {
+        "default": "mdi:power-settings"
+      }
+    },
+    "switch": {
+      "color_correction": {
+        "default": "mdi:tune-variant"
+      },
+      "input_lag_reduction": {
+        "default": "mdi:timer-outline"
+      },
+      "picture_muting": {
+        "default": "mdi:eye-outline",
+        "state": {
+          "on": "mdi:eye-off-outline"
+        }
+      },
+      "reality_creation": {
+        "default": "mdi:auto-fix"
+      },
+      "xv_color": {
+        "default": "mdi:palette-advanced"
+      }
+    }
+  }
+}
